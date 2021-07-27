@@ -18,10 +18,10 @@ public class Main {
             System.out.println(sum(array));
 
 
-        } catch (MyArraySizeException e){
+        } catch (MyArraySizeException e) {
 
             e.printStackTrace();
-        } catch (MyArrayDataException e){
+        } catch (MyArrayDataException e) {
 
             e.printStackTrace();
             System.out.println(e.getCol() + "  " + e.getRow());
@@ -31,30 +31,34 @@ public class Main {
         }
         System.out.println("Finn");
     }
-    static int sum(String[][] array) throws MyArrayDataException, MyArraySizeException{
 
-        if (array.length!=SIZE){
+    static int sum(String[][] array) throws MyArrayDataException, MyArraySizeException {
+
+        if (array.length != SIZE) {
             throw new MyArraySizeException();
         }
 
-        for(int st = 0; st < array.length; st ++){
-            if (array[st].length!=SIZE){
+        for (int st = 0; st < array.length; st++) {
+            if (array[st].length != SIZE) {
                 throw new MyArraySizeException();
             }
         }
         int sum = 0;
-        for(int i = 0;i< array.length;i++){
-            for(int i2 = 0; i2<array[i].length;i2++){
-                try{
+        for (int i = 0; i < array.length; i++) {
+            for (int i2 = 0; i2 < array[i].length; i2++) {
+                try {
                     sum += Integer.parseInt(array[i][i2]);
-                }catch (NumberFormatException e){
-                    throw new MyArrayDataException("format " + i + " " + i2,i,i2);
+                } catch (NumberFormatException e) {
+                    throw new MyArrayDataException("format " + i + " " + i2, i, i2);
                 }
-                return sum;
+
             }
         }
+        return sum;
     }
-   static boolean isNumber (String s) {
+
+
+    static boolean isNumber(String s) {
         return s.matches("^[-+]?[0-9]+");
-   }
+    }
 }
